@@ -7,18 +7,18 @@
   <meta name="description" content="BeliefSim is a belief-driven framework for simulating demographic misinformation susceptibility with LLMs.">
   <style>
     :root {
-      --ink: #1b1f29;
-      --muted: #5c6472;
-      --line: #d9dee8;
-      --paper: #fbfbf8;
-      --soft: #f1f3ee;
-      --blue: #315f8c;
-      --teal: #2d7a78;
-      --red: #a65f59;
-      --gold: #a98235;
-      --green: #597b4d;
+      --ink: #202033;
+      --muted: #66657a;
+      --line: #dedced;
+      --paper: #fbfaff;
+      --soft: #f2f0fb;
+      --blue: #5b67b1;
+      --teal: #248b8b;
+      --red: #b05d7a;
+      --gold: #b78a3b;
+      --green: #4f8b70;
       --shadow: 0 18px 55px rgba(27, 31, 41, 0.10);
-      --deep: #18222d;
+      --deep: #202033;
     }
 
     * { box-sizing: border-box; }
@@ -40,7 +40,7 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid rgba(217, 222, 232, 0.9);
-      background: rgba(251, 251, 248, 0.92);
+      background: rgba(251, 250, 255, 0.92);
       backdrop-filter: blur(14px);
     }
 
@@ -91,7 +91,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(110deg, rgba(251, 251, 248, 0.98) 0%, rgba(251, 251, 248, 0.92) 38%, rgba(251, 251, 248, 0.50) 100%),
+        linear-gradient(110deg, rgba(251, 250, 255, 0.98) 0%, rgba(251, 250, 255, 0.92) 38%, rgba(251, 250, 255, 0.50) 100%),
         url("data:image/svg+xml,%3Csvg width='1400' height='780' viewBox='0 0 1400 780' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1400' height='780' fill='%23eef1ed'/%3E%3Cg fill='none' stroke-width='2' opacity='.55'%3E%3Cpath d='M140 580 C310 420 430 460 570 300 S900 140 1230 210' stroke='%23315f8c'/%3E%3Cpath d='M210 660 C360 540 490 570 650 420 S920 250 1260 310' stroke='%232d7a78'/%3E%3Cpath d='M270 190 C390 270 500 210 660 300 S930 470 1210 430' stroke='%23a65f59'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='190' cy='575' r='42' fill='%23315f8c' fill-opacity='.16' stroke='%23315f8c'/%3E%3Ccircle cx='420' cy='454' r='32' fill='%232d7a78' fill-opacity='.16' stroke='%232d7a78'/%3E%3Ccircle cx='620' cy='305' r='46' fill='%23a98235' fill-opacity='.16' stroke='%23a98235'/%3E%3Ccircle cx='870' cy='198' r='36' fill='%23597b4d' fill-opacity='.16' stroke='%23597b4d'/%3E%3Ccircle cx='1190' cy='225' r='50' fill='%23a65f59' fill-opacity='.14' stroke='%23a65f59'/%3E%3Ccircle cx='1090' cy='425' r='38' fill='%23315f8c' fill-opacity='.13' stroke='%23315f8c'/%3E%3C/g%3E%3Cg fill='%231b1f29' fill-opacity='.06'%3E%3Ccircle cx='330' cy='270' r='7'/%3E%3Ccircle cx='715' cy='520' r='9'/%3E%3Ccircle cx='1015' cy='315' r='6'/%3E%3Ccircle cx='1290' cy='495' r='8'/%3E%3C/g%3E%3C/svg%3E");
       background-size: cover;
       background-position: center right;
@@ -160,7 +160,7 @@
     }
 
     .button.secondary {
-      background: rgba(251, 251, 248, 0.88);
+      background: rgba(251, 250, 255, 0.90);
       color: var(--ink);
       border-color: var(--line);
     }
@@ -274,7 +274,7 @@
     }
 
     .taxonomy th {
-      background: #eef4f4;
+      background: #eef4fb;
       color: #243646;
       font-size: 13px;
       text-transform: uppercase;
@@ -346,7 +346,7 @@
       padding: 12px 14px;
       color: var(--muted);
       font-size: 13px;
-      background: #fffdf7;
+      background: #fcfbff;
     }
 
     .result-table {
@@ -365,7 +365,7 @@
 
     .result-table th {
       color: #243646;
-      background: #eef4f4;
+      background: #eef4fb;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -386,14 +386,14 @@
       padding: 5px 11px;
       font-size: 13px;
       font-weight: 700;
-      background: #eef4f4;
+      background: #eef4fb;
       color: #244a55;
       border: 1px solid #d5e4e3;
     }
 
-    .pill.gold { background: #fbf2dc; color: #6b4f16; border-color: #ead9aa; }
-    .pill.red { background: #fae9e7; color: #7a3530; border-color: #efcbc7; }
-    .pill.green { background: #eef5e9; color: #3c5b34; border-color: #d7e6cf; }
+    .pill.gold { background: #fbf1dc; color: #6b4f16; border-color: #ead9aa; }
+    .pill.red { background: #fae9f0; color: #7a3530; border-color: #efcbc7; }
+    .pill.green { background: #edf7f2; color: #3c5b34; border-color: #d7e6cf; }
 
     .sample-grid {
       display: grid;
@@ -448,7 +448,7 @@
       padding: 4px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: #f4f6ef;
+      background: #f1effa;
       margin-bottom: 16px;
     }
 
@@ -497,7 +497,7 @@
       gap: 18px;
       padding: 22px;
       border-bottom: 1px solid var(--line);
-      background: #f6f8f1;
+      background: #f4f2fc;
     }
 
     .showcase-head h3 {
@@ -593,7 +593,7 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 11px;
-      background: #f7faf8;
+      background: #f5fbfb;
       text-align: center;
       color: #35404c;
       font-weight: 700;
@@ -623,7 +623,7 @@
     .hbar-track {
       height: 14px;
       border-radius: 999px;
-      background: #eef0ea;
+      background: #eeecf8;
       overflow: hidden;
     }
 
@@ -646,7 +646,7 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 14px;
-      background: #f8fbf7;
+      background: #f7fbfb;
     }
 
     .delta-cell strong { display: block; font-size: 22px; color: var(--green); }
@@ -655,7 +655,7 @@
 
     .content-note {
       border: 1px solid #ead9aa;
-      background: #fff8e8;
+      background: #fff8ec;
       color: #604716;
       border-radius: 8px;
       padding: 13px 15px;
@@ -679,12 +679,12 @@
     }
 
     .data-row:last-child { border-bottom: 0; }
-    .data-key { padding: 13px 14px; background: #f5f7f0; font-weight: 760; color: #34414c; }
+    .data-key { padding: 13px 14px; background: #f4f2fb; font-weight: 760; color: #34414c; }
     .data-value { padding: 13px 14px; color: #3d4550; }
 
     .claim-box {
       border-left: 5px solid var(--red);
-      background: #fffafa;
+      background: #fff8fb;
       padding: 14px;
       border-radius: 7px;
       color: #373f4a;
@@ -970,12 +970,35 @@
         <p class="lead">The main results separate useful belief conditioning from brittle demographic sensitivity. Lower flip rates indicate lower counterfactual dependence on demographic cues.</p>
       </div>
       <div class="segmented" role="tablist" aria-label="Result views">
-        <button type="button" role="tab" aria-selected="true" data-target="result-shortcut">Shortcut Reliance</button>
+        <button type="button" role="tab" aria-selected="true" data-target="result-main">Belief Priors</button>
+        <button type="button" role="tab" aria-selected="false" data-target="result-shortcut">Shortcut Reliance</button>
         <button type="button" role="tab" aria-selected="false" data-target="result-complement">Complementarity</button>
         <button type="button" role="tab" aria-selected="false" data-target="result-qual">Qualitative Evidence</button>
       </div>
 
-      <div id="result-shortcut" class="interactive-panel">
+      <div id="result-main" class="interactive-panel">
+        <div class="results">
+          <article class="chart-card">
+            <h3>Belief Priors Improve Alignment</h3>
+            <div class="hbar-row"><span>No beliefs</span><div class="hbar-track"><span class="hbar-fill" style="width: 72%"></span></div><span>Base</span></div>
+            <div class="hbar-row"><span>Demographics</span><div class="hbar-track"><span class="hbar-fill" style="width: 76%"></span></div><span>Small</span></div>
+            <div class="hbar-row"><span>Observed beliefs</span><div class="hbar-track"><span class="hbar-fill" style="width: 88%"></span></div><span>Strong</span></div>
+            <div class="hbar-row"><span>Observed + priors</span><div class="hbar-track"><span class="hbar-fill" style="width: 94%"></span></div><span>Best</span></div>
+            <p>Across settings, belief context provides a stronger simulation signal than demographic descriptors alone.</p>
+          </article>
+          <article class="panel">
+            <h3>Takeaway</h3>
+            <p>BeliefSim shifts the conditioning signal from who a person is demographically to what the person and their group tend to believe. This makes the model's prediction more aligned with participant judgments while reducing reliance on demographic labels alone.</p>
+            <div class="pill-row">
+              <span class="pill green">Observed beliefs</span>
+              <span class="pill green">Group belief priors</span>
+              <span class="pill gold">Demographics as weak context</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div id="result-shortcut" class="interactive-panel" hidden>
         <div class="results">
           <article class="chart-card">
             <h3>Shortcut Reliance Flip Rates</h3>
@@ -983,7 +1006,7 @@
             <div class="hbar-row"><span>Qwen2.5-7B</span><div class="hbar-track"><span class="hbar-fill" style="width: 31%"></span></div><span>3.44</span></div>
             <div class="hbar-row"><span>Grok-4 Fast</span><div class="hbar-track"><span class="hbar-fill" style="width: 43%"></span></div><span>4.80</span></div>
             <div class="hbar-row"><span>Meta-Llama-3-8B</span><div class="hbar-track"><span class="hbar-fill warn" style="width: 100%"></span></div><span>11.25</span></div>
-            <p>Panel B shortcut-reliance flip rates (%).</p>
+            <p>Shortcut-reliance flip rates under counterfactual demographic swaps (%).</p>
           </article>
           <article class="panel">
             <h3>Main Findings</h3>
