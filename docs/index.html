@@ -654,13 +654,27 @@
     .delta-cell span { color: var(--muted); font-size: 13px; }
 
     .content-note {
-      border: 1px solid #ead9aa;
-      background: #fff8ec;
-      color: #604716;
+      border: 1px solid #d8b35c;
+      background: #fff6df;
+      color: #4f3b0d;
       border-radius: 8px;
-      padding: 13px 15px;
-      margin-bottom: 16px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
       font-size: 14px;
+      box-shadow: 0 8px 22px rgba(183, 138, 59, 0.12);
+    }
+
+    .content-note strong {
+      display: inline-block;
+      margin-right: 6px;
+      color: #3f2e07;
+    }
+
+    .hero-note {
+      max-width: 720px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .data-card {
@@ -806,6 +820,7 @@
       <h1>BeliefSim</h1>
       <p class="subtitle">Towards belief-driven simulation of demographic misinformation susceptibility.</p>
       <p class="authors">Angana Borah, Zohaib Khan, Rada Mihalcea, and Veronica Perez-Rosas</p>
+      <p class="hero-note">Content note: this project studies real misinformation and rumor examples; some shortened examples may contain harmful or stigmatizing wording.</p>
       <div class="actions" aria-label="Project links">
         <a class="button" href="https://arxiv.org/pdf/2603.03585" target="_blank" rel="noopener">Paper</a>
         <a class="button secondary" href="https://github.com/MichiganNLP/belief-sim" target="_blank" rel="noopener">Code</a>
@@ -1066,7 +1081,7 @@
         <p class="lead">Each target evaluation instance pairs a held-out misinformation judgment with two same-participant observed belief judgments and optional WVS-derived group belief priors.</p>
       </div>
       <div class="content-note">
-        Content note: source claims are real examples of misinformation or breaking-news rumors and may contain offensive, stigmatizing, or otherwise harmful wording. Examples below are shortened and shown for research transparency.
+        <strong>Content note.</strong> Source claims are real examples of misinformation or breaking-news rumors and may contain offensive, stigmatizing, or otherwise harmful wording. Examples below are shortened and shown for research transparency.
       </div>
       <div class="segmented" role="tablist" aria-label="Data sample views">
         <button type="button" role="tab" aria-selected="true" data-target="sample-instance">Evaluation Instance</button>
@@ -1150,7 +1165,7 @@
     <section id="citation">
       <div class="section-head">
         <h2>Citation</h2>
-        <p class="lead">If you use BeliefSim, cite the paper below.</p>
+        <p class="lead">Please cite our paper below. If you have any questions or are interested in collaborating on our misinformation efforts, feel free to reach out at <a href="mailto:anganab@umich.edu">anganab@umich.edu</a>.</p>
       </div>
       <pre>@article{borah2026belief,
   title={Belief-Sim: Towards Belief-Driven Simulation of Demographic Misinformation Susceptibility},
