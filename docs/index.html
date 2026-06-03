@@ -314,6 +314,132 @@
       padding-left: 18px;
     }
 
+    .figure-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      margin-top: 22px;
+      align-items: stretch;
+    }
+
+    .figure-card {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(27, 31, 41, 0.06);
+    }
+
+    .figure-card object {
+      display: block;
+      width: 100%;
+      height: 360px;
+      background: #f7f7f2;
+      border: 0;
+    }
+
+    .figure-card.compact object { height: 280px; }
+
+    .figure-caption {
+      border-top: 1px solid var(--line);
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      background: #fffdf7;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .result-table th,
+    .result-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 9px 8px;
+      text-align: left;
+    }
+
+    .result-table th {
+      color: #243646;
+      background: #eef4f4;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #eef4f4;
+      color: #244a55;
+      border: 1px solid #d5e4e3;
+    }
+
+    .pill.gold { background: #fbf2dc; color: #6b4f16; border-color: #ead9aa; }
+    .pill.red { background: #fae9e7; color: #7a3530; border-color: #efcbc7; }
+    .pill.green { background: #eef5e9; color: #3c5b34; border-color: #d7e6cf; }
+
+    .sample-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .sample {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 17px;
+      background: white;
+      box-shadow: 0 10px 28px rgba(27, 31, 41, 0.05);
+    }
+
+    .sample small {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--teal);
+      font-weight: 760;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .sample p { margin: 0; color: #3d4550; }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .resource {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: white;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(27, 31, 41, 0.05);
+    }
+
+    .resource strong { display: block; margin-bottom: 6px; }
+    .resource span { color: var(--muted); font-size: 14px; }
+    .resource:hover { border-color: var(--teal); }
+
+
     .mini-bars {
       display: grid;
       gap: 13px;
@@ -382,7 +508,10 @@
       .section-head,
       .framework,
       .grid-3,
-      .results {
+      .results,
+      .figure-grid,
+      .sample-grid,
+      .resource-grid {
         grid-template-columns: 1fr;
       }
 
@@ -407,6 +536,8 @@
         <a href="#framework">Framework</a>
         <a href="#taxonomy">Taxonomy</a>
         <a href="#results">Results</a>
+        <a href="#data">Data</a>
+        <a href="#resources">Resources</a>
         <a href="#citation">Citation</a>
       </div>
     </nav>
@@ -414,7 +545,6 @@
 
   <section class="hero" id="top">
     <div class="hero-inner">
-      <p class="eyebrow">ACL 2026 Research Project</p>
       <h1>BeliefSim</h1>
       <p class="subtitle">Towards belief-driven simulation of demographic misinformation susceptibility.</p>
       <p class="authors">Angana Borah, Zohaib Khan, Rada Mihalcea, and Veronica Perez-Rosas</p>
@@ -441,8 +571,8 @@
           <span>modeling strategies: prompt conditioning and post-training adaptation</span>
         </div>
         <div class="metric">
-          <strong>92%</strong>
-          <span>reported alignment upper bound across evaluated settings</span>
+          <strong>13.8K</strong>
+          <span>target evaluation instances with paired observed belief judgments</span>
         </div>
       </div>
     </section>
@@ -452,31 +582,39 @@
         <h2>Framework</h2>
         <p class="lead">The pipeline maps individual judgments and survey-derived group priors into belief profiles, conditions LLMs with those profiles, and evaluates susceptibility alignment plus counterfactual demographic sensitivity.</p>
       </div>
-      <div class="framework" aria-label="BeliefSim framework diagram">
-        <article class="stage">
-          <h3>Participant Data</h3>
-          <ul>
-            <li>Demographics: age, education, gender, living area</li>
-            <li>Observed belief judgments from participants</li>
-            <li>Group-level imputed beliefs from WVS priors</li>
-          </ul>
+      <div class="figure-grid">
+        <article class="figure-card">
+          <object data="assets/beliefsim.pdf" type="application/pdf" aria-label="BeliefSim framework figure">
+            <a href="assets/beliefsim.pdf">Open BeliefSim framework figure</a>
+          </object>
+          <div class="figure-caption">BeliefSim framework from the paper: demographics and belief priors are mapped into model conditioning and evaluated against human susceptibility judgments.</div>
         </article>
-        <article class="stage">
-          <h3>Modeling</h3>
-          <ul>
-            <li>BeliefSim-PC: in-context belief and demographic conditioning</li>
-            <li>BeliefSim-FT: two-phase post-training adaptation</li>
-            <li>Belief representations separated from susceptibility prediction</li>
-          </ul>
-        </article>
-        <article class="stage">
-          <h3>Evaluation</h3>
-          <ul>
-            <li>Human-LLM susceptibility alignment</li>
-            <li>Counterfactual demographic stress tests</li>
-            <li>Belief-topic and demographic trend analysis</li>
-          </ul>
-        </article>
+        <div class="framework" aria-label="BeliefSim framework diagram">
+          <article class="stage">
+            <h3>Participant Data</h3>
+            <ul>
+              <li>Demographics: age, education, gender, living area</li>
+              <li>Observed belief judgments from participants</li>
+              <li>Group-level imputed beliefs from WVS priors</li>
+            </ul>
+          </article>
+          <article class="stage">
+            <h3>Modeling</h3>
+            <ul>
+              <li>BeliefSim-PC: prompt conditioning</li>
+              <li>BeliefSim-FT: two-phase adaptation</li>
+              <li>Belief representations separated from prediction</li>
+            </ul>
+          </article>
+          <article class="stage">
+            <h3>Evaluation</h3>
+            <ul>
+              <li>Susceptibility alignment</li>
+              <li>Counterfactual demographic stress tests</li>
+              <li>Belief-topic trend analysis</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -557,21 +695,101 @@
       </div>
       <div class="results">
         <article class="panel">
-          <h3>Key Findings</h3>
+          <h3>Main Findings</h3>
           <ul>
-            <li>Belief priors are more informative than demographic labels alone.</li>
-            <li>Two-phase post-training improves transfer and reduces shortcut reliance.</li>
-            <li>Counterfactual stress tests distinguish useful demographic priors from stereotype-like sensitivity.</li>
+            <li>Belief priors provide stronger signal than demographics alone for simulating misinformation judgments.</li>
+            <li>Two-phase post-training improves transfer by separating belief modeling from claim classification.</li>
+            <li>Counterfactual tests reveal when demographic cues act as unstable shortcuts rather than useful priors.</li>
           </ul>
-        </article>
-        <article class="panel">
-          <h3>Evaluation View</h3>
-          <div class="mini-bars" aria-label="Evaluation focus areas">
-            <div class="bar-row"><span>Alignment</span><div class="bar"><span style="width: 92%"></span></div><span>92%</span></div>
-            <div class="bar-row"><span>Counterfactuals</span><div class="bar"><span style="width: 78%"></span></div><span>Stress</span></div>
-            <div class="bar-row"><span>Themes</span><div class="bar"><span style="width: 64%"></span></div><span>Tax</span></div>
+          <div class="pill-row">
+            <span class="pill green">Belief priors help</span>
+            <span class="pill gold">Demographics are weak priors</span>
+            <span class="pill red">Shortcut risk remains model-dependent</span>
           </div>
         </article>
+        <article class="panel">
+          <h3>Counterfactual Summary</h3>
+          <table class="result-table">
+            <thead><tr><th>Model</th><th>Utility</th><th>Shortcut</th><th>Complement</th></tr></thead>
+            <tbody>
+              <tr><td>Mistral-7B</td><td>0.30</td><td>1.56</td><td>2.57</td></tr>
+              <tr><td>Qwen2.5-7B</td><td>2.37</td><td>3.44</td><td>4.00</td></tr>
+              <tr><td>Meta-Llama-3-8B</td><td>14.13</td><td>11.25</td><td>5.39</td></tr>
+              <tr><td>Grok-4 Fast</td><td>4.41</td><td>4.80</td><td>4.37</td></tr>
+            </tbody>
+          </table>
+          <p>Values are demographic flip rates (%); Grok is shown for PANDORA-only counterfactuals.</p>
+        </article>
+      </div>
+      <div class="figure-grid">
+        <article class="figure-card compact">
+          <object data="assets/flip_rates.pdf" type="application/pdf" aria-label="Counterfactual flip rates figure">
+            <a href="assets/flip_rates.pdf">Open flip-rates figure</a>
+          </object>
+          <div class="figure-caption">Counterfactual demographic flip rates by model and demographic axis.</div>
+        </article>
+        <article class="figure-card compact">
+          <object data="assets/complement_delta_heatmap.pdf" type="application/pdf" aria-label="Complementarity heatmap figure">
+            <a href="assets/complement_delta_heatmap.pdf">Open complementarity heatmap</a>
+          </object>
+          <div class="figure-caption">Complementarity analysis: when demographics improve or degrade predictions given belief context.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="data">
+      <div class="section-head">
+        <h2>Data Samples</h2>
+        <p class="lead">BeliefSim evaluates target misinformation judgments with two held-out same-participant belief judgments and optional group-level belief priors.</p>
+      </div>
+      <div class="sample-grid">
+        <article class="sample">
+          <small>Target Claim</small>
+          <p>Coronavirus-North Korea's first confirmed patient shot dead.</p>
+        </article>
+        <article class="sample">
+          <small>Observed Belief</small>
+          <p>Previously judged claim: CDC COVID numbers; participant response: misinformation.</p>
+        </article>
+        <article class="sample">
+          <small>Imputed Belief Prior</small>
+          <p>Survey-derived WVS belief summaries grouped by gender, age, education, or living area.</p>
+        </article>
+      </div>
+      <div class="figure-grid">
+        <article class="figure-card compact">
+          <object data="assets/data_ex.pdf" type="application/pdf" aria-label="Data example figure">
+            <a href="assets/data_ex.pdf">Open data example figure</a>
+          </object>
+          <div class="figure-caption">Example of the claim and belief-conditioning structure used in the experiments.</div>
+        </article>
+        <article class="figure-card compact">
+          <object data="assets/counterfactual.pdf" type="application/pdf" aria-label="Counterfactual evaluation figure">
+            <a href="assets/counterfactual.pdf">Open counterfactual evaluation figure</a>
+          </object>
+          <div class="figure-caption">Counterfactual setup for demographic utility, shortcut reliance, and complementarity evaluation.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="section-head">
+        <h2>Resources</h2>
+        <p class="lead">Code, paper, and dataset/model release links can be surfaced here as they become public.</p>
+      </div>
+      <div class="resource-grid">
+        <a class="resource" href="https://arxiv.org/abs/2603.03585" target="_blank" rel="noopener">
+          <strong>arXiv Paper</strong>
+          <span>Belief-Sim preprint and PDF.</span>
+        </a>
+        <a class="resource" href="https://github.com/MichiganNLP/belief-sim" target="_blank" rel="noopener">
+          <strong>Code</strong>
+          <span>Experiment scripts, prompts, and analysis utilities.</span>
+        </a>
+        <a class="resource" href="https://huggingface.co/MichiganNLP" target="_blank" rel="noopener">
+          <strong>Hugging Face</strong>
+          <span>Placeholder for dataset/model releases under MichiganNLP.</span>
+        </a>
       </div>
     </section>
 
@@ -580,13 +798,11 @@
         <h2>Citation</h2>
         <p class="lead">If you use BeliefSim, cite the paper below.</p>
       </div>
-      <pre>@misc{borah2026beliefsim,
-  title = {{BeliefSim}: Towards Belief-Driven Simulation of Demographic Misinformation Susceptibility},
-  author = {Borah, Angana and Khan, Zohaib and Mihalcea, Rada and Perez-Rosas, Veronica},
-  year = {2026},
-  eprint = {2603.03585},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CL}
+      <pre>@article{borah2026belief,
+  title={Belief-Sim: Towards Belief-Driven Simulation of Demographic Misinformation Susceptibility},
+  author={Borah, Angana and Khan, Zohaib and Mihalcea, Rada and P{\'e}rez-Rosas, Ver{\'o}nica},
+  journal={arXiv preprint arXiv:2603.03585},
+  year={2026}
 }</pre>
     </section>
   </main>
