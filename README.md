@@ -164,14 +164,6 @@ GPU access is recommended for local Hugging Face model inference and fine-tuning
 
 The project website is served from `docs/` through GitHub Pages.
 
-```text
-docs/index.html
-docs/.nojekyll
-docs/assets/
-```
-
-GitHub Pages should be configured to deploy from the `docs/` folder on the `main` branch.
-
 ## Content Note
 
 This project studies real misinformation and rumor examples. Some claims may contain offensive, stigmatizing, or otherwise harmful wording. They are included for research transparency and should be handled with care.
