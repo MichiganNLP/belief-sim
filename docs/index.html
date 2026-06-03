@@ -441,6 +441,47 @@
     .resource:hover { border-color: var(--teal); }
 
 
+    .segmented {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f4f6ef;
+      margin-bottom: 16px;
+    }
+
+    .segmented button {
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-weight: 720;
+      cursor: pointer;
+    }
+
+    .segmented button[aria-selected="true"] {
+      background: white;
+      color: var(--ink);
+      box-shadow: 0 4px 12px rgba(27, 31, 41, 0.08);
+    }
+
+    .interactive-panel[hidden] { display: none; }
+
+    .evidence-quote {
+      border-left: 5px solid var(--gold);
+      background: #fffaf0;
+      color: #3b414a;
+      padding: 14px;
+      border-radius: 7px;
+      margin: 12px 0 0;
+      font-size: 14px;
+    }
+
+
     .framework-showcase {
       margin-top: 20px;
       border: 1px solid var(--line);
@@ -928,45 +969,71 @@
         <h2>Results</h2>
         <p class="lead">The main results separate useful belief conditioning from brittle demographic sensitivity. Lower flip rates indicate lower counterfactual dependence on demographic cues.</p>
       </div>
-      <div class="results">
-        <article class="chart-card">
-          <h3>Counterfactual Flip Rates</h3>
-          <div class="hbar-row"><span>Mistral-7B</span><div class="hbar-track"><span class="hbar-fill" style="width: 14%"></span></div><span>1.56</span></div>
-          <div class="hbar-row"><span>Qwen2.5-7B</span><div class="hbar-track"><span class="hbar-fill" style="width: 31%"></span></div><span>3.44</span></div>
-          <div class="hbar-row"><span>Grok-4 Fast</span><div class="hbar-track"><span class="hbar-fill" style="width: 43%"></span></div><span>4.80</span></div>
-          <div class="hbar-row"><span>Meta-Llama-3-8B</span><div class="hbar-track"><span class="hbar-fill warn" style="width: 100%"></span></div><span>11.25</span></div>
-          <p>Panel B shortcut-reliance flip rates (%). Grok is PANDORA-only.</p>
-        </article>
-        <article class="panel">
-          <h3>Main Findings</h3>
-          <ul>
-            <li>Belief priors provide stronger signal than demographic labels alone.</li>
-            <li>Post-training improves transfer by separating belief modeling from claim classification.</li>
-            <li>Qualitative inspection shows some models explicitly invoke demographic stereotypes in shortcut cases.</li>
-          </ul>
-          <div class="pill-row">
-            <span class="pill green">Belief priors help</span>
-            <span class="pill gold">Demographics are weak priors</span>
-            <span class="pill red">Shortcut risk is model-dependent</span>
-          </div>
-        </article>
+      <div class="segmented" role="tablist" aria-label="Result views">
+        <button type="button" role="tab" aria-selected="true" data-target="result-shortcut">Shortcut Reliance</button>
+        <button type="button" role="tab" aria-selected="false" data-target="result-complement">Complementarity</button>
+        <button type="button" role="tab" aria-selected="false" data-target="result-qual">Qualitative Evidence</button>
       </div>
-      <div class="results" style="margin-top: 18px;">
-        <article class="chart-card">
-          <h3>Grok Complementarity: Demo − No Demo</h3>
-          <div class="demo-delta">
-            <div class="delta-cell"><strong>+3.48</strong><span>Gender</span></div>
-            <div class="delta-cell"><strong>+3.48</strong><span>Living Area</span></div>
-            <div class="delta-cell"><strong>+4.18</strong><span>Age</span></div>
-            <div class="delta-cell neg"><strong>−1.40</strong><span>Education</span></div>
-          </div>
-          <p>Change in accuracy points when demographics are added to degraded belief context for Grok on PANDORA.</p>
-        </article>
-        <article class="panel">
-          <h3>Qualitative Shortcut Evidence</h3>
-          <p>In flipped shortcut-reliance cases, some raw outputs explicitly referenced demographic attributes. For example, models sometimes connected education, living area, or gender to a person's ability or tendency to assess claims.</p>
-          <p>We treat these examples as qualitative support, not as the primary metric, because many outputs only contain final labels or explicitly reject demographic relevance.</p>
-        </article>
+
+      <div id="result-shortcut" class="interactive-panel">
+        <div class="results">
+          <article class="chart-card">
+            <h3>Shortcut Reliance Flip Rates</h3>
+            <div class="hbar-row"><span>Mistral-7B</span><div class="hbar-track"><span class="hbar-fill" style="width: 14%"></span></div><span>1.56</span></div>
+            <div class="hbar-row"><span>Qwen2.5-7B</span><div class="hbar-track"><span class="hbar-fill" style="width: 31%"></span></div><span>3.44</span></div>
+            <div class="hbar-row"><span>Grok-4 Fast</span><div class="hbar-track"><span class="hbar-fill" style="width: 43%"></span></div><span>4.80</span></div>
+            <div class="hbar-row"><span>Meta-Llama-3-8B</span><div class="hbar-track"><span class="hbar-fill warn" style="width: 100%"></span></div><span>11.25</span></div>
+            <p>Panel B shortcut-reliance flip rates (%).</p>
+          </article>
+          <article class="panel">
+            <h3>Main Findings</h3>
+            <ul>
+              <li>Belief priors provide stronger signal than demographic labels alone.</li>
+              <li>Post-training improves transfer by separating belief modeling from claim classification.</li>
+              <li>Counterfactual swaps reveal when demographic cues act as unstable shortcuts.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill green">Belief priors help</span>
+              <span class="pill gold">Demographics are weak priors</span>
+              <span class="pill red">Shortcut risk is model-dependent</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div id="result-complement" class="interactive-panel" hidden>
+        <div class="results">
+          <article class="chart-card">
+            <h3>Complementarity: Demo − No Demo</h3>
+            <div class="demo-delta">
+              <div class="delta-cell"><strong>+3.48</strong><span>Gender</span></div>
+              <div class="delta-cell"><strong>+3.48</strong><span>Living Area</span></div>
+              <div class="delta-cell"><strong>+4.18</strong><span>Age</span></div>
+              <div class="delta-cell neg"><strong>−1.40</strong><span>Education</span></div>
+            </div>
+            <p>Change in accuracy points when demographic context is added to degraded belief context.</p>
+          </article>
+          <article class="panel">
+            <h3>Interpretation</h3>
+            <p>Demographics can sometimes complement belief context, but the gains are uneven and small relative to the risk of shortcut sensitivity.</p>
+            <p>The result supports using beliefs as the central conditioning signal, with demographics treated as weak priors rather than direct explanations.</p>
+          </article>
+        </div>
+      </div>
+
+      <div id="result-qual" class="interactive-panel" hidden>
+        <div class="results">
+          <article class="panel">
+            <h3>Qualitative Shortcut Evidence</h3>
+            <p>In flipped shortcut-reliance cases, some raw outputs explicitly referenced demographic attributes. Models sometimes connected education, living area, or gender to a person's ability or tendency to assess claims.</p>
+            <div class="evidence-quote">“The person living in a rural area might be more inclined to trust the news...”</div>
+            <div class="evidence-quote">“A person with a completed education is less likely to believe in such a sensational and unsubstantiated claim.”</div>
+          </article>
+          <article class="panel">
+            <h3>Use in the Paper</h3>
+            <p>These examples are supporting qualitative evidence. The main measurement remains behavioral: whether predictions flip under controlled demographic swaps.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -976,46 +1043,70 @@
         <p class="lead">Each target evaluation instance pairs a held-out misinformation judgment with two same-participant observed belief judgments and optional WVS-derived group belief priors.</p>
       </div>
       <div class="content-note">
-        Content note: some source claims are real examples of misinformation or breaking-news rumors and may contain offensive, stigmatizing, or otherwise harmful wording. Examples below are shortened and shown for research transparency.
+        Content note: source claims are real examples of misinformation or breaking-news rumors and may contain offensive, stigmatizing, or otherwise harmful wording. Examples below are shortened and shown for research transparency.
       </div>
-      <div class="data-card" aria-label="Example BeliefSim evaluation instance">
-        <div class="data-row">
-          <div class="data-key">Participant profile</div>
-          <div class="data-value">Age group, gender, education, and living-area fields are used as demographic context.</div>
-        </div>
-        <div class="data-row">
-          <div class="data-key">Observed beliefs</div>
-          <div class="data-value">Two previous claims judged by the same participant are held out from the target and provided as belief context.</div>
-        </div>
-        <div class="data-row">
-          <div class="data-key">Target claim</div>
-          <div class="data-value"><div class="claim-box">Example shortened claim: “Hostage situation erupts in Sydney cafe...”</div></div>
-        </div>
-        <div class="data-row">
-          <div class="data-key">Model task</div>
-          <div class="data-value">Predict the participant's judgment: true information, misinformation, or not sure.</div>
+      <div class="segmented" role="tablist" aria-label="Data sample views">
+        <button type="button" role="tab" aria-selected="true" data-target="sample-instance">Evaluation Instance</button>
+        <button type="button" role="tab" aria-selected="false" data-target="sample-beliefs">Belief Context</button>
+        <button type="button" role="tab" aria-selected="false" data-target="sample-priors">Group Priors</button>
+      </div>
+
+      <div id="sample-instance" class="interactive-panel">
+        <div class="data-card" aria-label="Example BeliefSim evaluation instance">
+          <div class="data-row">
+            <div class="data-key">Participant profile</div>
+            <div class="data-value">Age group, gender, education, and living-area fields are used as demographic context.</div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Target claim</div>
+            <div class="data-value"><div class="claim-box">Example shortened claim: “Hostage situation erupts in Sydney cafe...”</div></div>
+          </div>
+          <div class="data-row">
+            <div class="data-key">Model task</div>
+            <div class="data-value">Predict the participant's judgment: true information, misinformation, or not sure.</div>
+          </div>
         </div>
       </div>
-      <div class="sample-grid" style="margin-top: 16px;">
-        <article class="sample">
-          <small>Observed Belief 1</small>
-          <p>Participant judged a previous claim as misinformation.</p>
-        </article>
-        <article class="sample">
-          <small>Observed Belief 2</small>
-          <p>Participant judged a separate breaking-news claim as true information.</p>
-        </article>
-        <article class="sample">
-          <small>Imputed Prior</small>
-          <p>WVS summaries provide group-level belief priors for the selected demographic axis.</p>
-        </article>
+
+      <div id="sample-beliefs" class="interactive-panel" hidden>
+        <div class="sample-grid">
+          <article class="sample">
+            <small>Observed Belief 1</small>
+            <p>A previous claim judged by the same participant is supplied as context.</p>
+          </article>
+          <article class="sample">
+            <small>Observed Belief 2</small>
+            <p>A second held-out judgment provides an additional individual-level belief signal.</p>
+          </article>
+          <article class="sample">
+            <small>Target Held Out</small>
+            <p>The target claim is separate from the observed beliefs to avoid leakage.</p>
+          </article>
+        </div>
+      </div>
+
+      <div id="sample-priors" class="interactive-panel" hidden>
+        <div class="sample-grid">
+          <article class="sample">
+            <small>WVS Prior</small>
+            <p>Survey responses are summarized into belief dimensions for demographic groups.</p>
+          </article>
+          <article class="sample">
+            <small>BeliefSim-Tax</small>
+            <p>Priors are organized around worldview, trust, cognitive style, values, affect, conspiracy mentality, and heuristics.</p>
+          </article>
+          <article class="sample">
+            <small>Conditioning</small>
+            <p>The model receives compact belief summaries rather than demographic labels alone.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section id="resources">
       <div class="section-head">
         <h2>Resources</h2>
-        <p class="lead">Code, paper, and dataset/model release links can be surfaced here as they become public.</p>
+        <p class="lead">Code, paper, and release resources for BeliefSim.</p>
       </div>
       <div class="resource-grid">
         <a class="resource" href="https://arxiv.org/abs/2603.03585" target="_blank" rel="noopener">
@@ -1028,7 +1119,7 @@
         </a>
         <a class="resource" href="https://huggingface.co/MichiganNLP" target="_blank" rel="noopener">
           <strong>Hugging Face</strong>
-          <span>Dataset/model release location. BeliefSim release link will be added after upload.</span>
+          <span>MichiganNLP dataset and model releases.</span>
         </a>
       </div>
     </section>
@@ -1050,5 +1141,21 @@
   <footer class="footer">
     BeliefSim: belief-driven simulation of demographic misinformation susceptibility.
   </footer>
+
+  <script>
+    document.querySelectorAll('.segmented').forEach((group) => {
+      const buttons = Array.from(group.querySelectorAll('button[data-target]'));
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          buttons.forEach((b) => b.setAttribute('aria-selected', 'false'));
+          button.setAttribute('aria-selected', 'true');
+          buttons.forEach((b) => {
+            const panel = document.getElementById(b.dataset.target);
+            if (panel) panel.hidden = b !== button;
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
