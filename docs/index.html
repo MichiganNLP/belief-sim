@@ -820,10 +820,11 @@
       <h1>BeliefSim</h1>
       <p class="subtitle">Towards belief-driven simulation of demographic misinformation susceptibility.</p>
       <p class="authors">Angana Borah, Zohaib Khan, Rada Mihalcea, and Veronica Perez-Rosas</p>
-      <p class="hero-note">Content note: this project studies real misinformation and rumor examples; some shortened examples may contain harmful or stigmatizing wording.</p>
+      <p class="hero-note">Content note: this project studies real misinformation and rumor examples; some examples may contain harmful or stigmatizing wording.</p>
       <div class="actions" aria-label="Project links">
         <a class="button" href="https://arxiv.org/pdf/2603.03585" target="_blank" rel="noopener">Paper</a>
         <a class="button secondary" href="https://github.com/MichiganNLP/belief-sim" target="_blank" rel="noopener">Code</a>
+        <a class="button secondary" href="https://huggingface.co/datasets/Angana192/beliefsim" target="_blank" rel="noopener">Dataset</a>
       </div>
     </div>
   </section>
@@ -1078,10 +1079,10 @@
     <section id="data">
       <div class="section-head">
         <h2>Data Samples</h2>
-        <p class="lead">Each target evaluation instance pairs a held-out misinformation judgment with two same-participant observed belief judgments and optional WVS-derived group belief priors.</p>
+        <p class="lead">Each target evaluation instance pairs a held-out misinformation judgment with two same-participant observed belief judgments and optional WVS-derived group belief priors. The anonymized release is available on <a href="https://huggingface.co/datasets/Angana192/beliefsim" target="_blank" rel="noopener">Hugging Face</a>.</p>
       </div>
       <div class="content-note">
-        <strong>Content note.</strong> Source claims are real examples of misinformation or breaking-news rumors and may contain offensive, stigmatizing, or otherwise harmful wording. Examples below are shortened and shown for research transparency.
+        <strong>Content note.</strong> Source claims are real examples of misinformation or breaking-news rumors and may contain offensive, stigmatizing, or otherwise harmful wording. Examples are shown for research transparency.
       </div>
       <div class="segmented" role="tablist" aria-label="Data sample views">
         <button type="button" role="tab" aria-selected="true" data-target="sample-instance">Evaluation Instance</button>
@@ -1097,7 +1098,7 @@
           </div>
           <div class="data-row">
             <div class="data-key">Target claim</div>
-            <div class="data-value"><div class="claim-box">Example shortened claim: “Hostage situation erupts in Sydney cafe...”</div></div>
+            <div class="data-value"><div class="claim-box">Example claim: “Hostage situation erupts in Sydney cafe...”</div></div>
           </div>
           <div class="data-row">
             <div class="data-key">Model task</div>
@@ -1155,9 +1156,9 @@
           <strong>Code</strong>
           <span>Experiment scripts, prompts, and analysis utilities.</span>
         </a>
-        <a class="resource" href="https://huggingface.co/MichiganNLP" target="_blank" rel="noopener">
-          <strong>Hugging Face</strong>
-          <span>MichiganNLP dataset and model releases.</span>
+        <a class="resource" href="https://huggingface.co/datasets/Angana192/beliefsim" target="_blank" rel="noopener">
+          <strong>Dataset</strong>
+          <span>Anonymized BeliefSim release with claims, judgments, observed beliefs, and WVS group priors.</span>
         </a>
       </div>
     </section>
@@ -1165,7 +1166,7 @@
     <section id="citation">
       <div class="section-head">
         <h2>Citation</h2>
-        <p class="lead">Please cite our paper below. If you have any questions or are interested in collaborating on our misinformation efforts, feel free to reach out at <a href="mailto:anganab@umich.edu">anganab@umich.edu</a>.</p>
+        <p class="lead">If you use BeliefSim, please cite our paper below. If you have any questions or are interested in collaborating on our misinformation efforts, feel free to reach out at <a href="mailto:anganab@umich.edu">anganab@umich.edu</a>.</p>
       </div>
       <pre>@article{borah2026belief,
   title={Belief-Sim: Towards Belief-Driven Simulation of Demographic Misinformation Susceptibility},
